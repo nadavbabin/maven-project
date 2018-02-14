@@ -1,16 +1,16 @@
-pipeline {
-    agent any
-    tools {
-    	maven 'localMaven'
-    }
 
 
-    def myFunc(){
+def myFunc(){
     	echo '************************'
     	echo '***** my function ******'
     	echo '************************'
     }
 
+pipeline {
+    agent any
+    tools {
+    	maven 'localMaven'
+    }
 
     stages{
         stage('Build'){
