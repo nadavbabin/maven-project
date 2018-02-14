@@ -15,5 +15,11 @@ pipeline {
                 }
             }
         }
+        stage('Deploy to Staging'){
+        	steps{
+        		echo 'Starting to Deploy'
+        		build job: 'deploy-to-staging'
+        	}
+        }
     }
 }
