@@ -40,7 +40,9 @@ pipeline {
       }
 
       stage("last-changes") {
-        def publisher = LastChanges.getLastChangesPublisher "PREVIOUS_REVISION", "SIDE", "LINE", true, true, "", "", "", "", ""
+      	steps {
+      		script {
+      		  def publisher = LastChanges.getLastChangesPublisher "PREVIOUS_REVISION", "SIDE", "LINE", true, true, "", "", "", "", ""
               publisher.publishLastChanges()
               def changes = publisher.getLastChanges()
               println(changes.getEscapedDiff())
@@ -51,6 +53,8 @@ pipeline {
                   println(commitInfo.getCommitMessage())
                   println(commit.getChanges())
               }
+      		}
+      	}
       }
 
         stage('Deploy to Staging'){
