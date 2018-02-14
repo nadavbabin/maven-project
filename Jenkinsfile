@@ -40,8 +40,11 @@ pipeline {
       		script {
               echo '**************************************'
               echo '***********  SECOND TRY  *************'
-	              def shortCommit = sh(returnStdout : true , script : "git log -n 1 --pretty=format:'%h'").trim()
-    	          println(shortCommit)
+              	  def branch = sh(returnStdout : true , script : "git branch").trim()
+              	  def diff = sh(returnStdout : true , script : "git show --name-only").trim()
+    	          println(branch)
+    	          echo '-__________________________-------'
+    	          println(diff)
               echo '**************************************'
       		}
       	}
