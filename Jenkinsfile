@@ -26,7 +26,7 @@ pipeline {
         }
 
         stage('call-to-my-func'){
-        	myFunc();
+        	myFunc()
         }
 
         stage('Deploy to Staging'){
