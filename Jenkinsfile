@@ -34,7 +34,9 @@ pipeline {
         }
 
       stage("checkout") {
-        git url: 'https://github.com/nadavbabin/maven-project.git'
+      	  steps {
+	        git url: 'https://github.com/nadavbabin/maven-project.git'
+      	  }
       }
 
       stage("last-changes") {
