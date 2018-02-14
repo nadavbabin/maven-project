@@ -45,17 +45,13 @@ pipeline {
         			 echo '***************************'
         			 echo '******** STARTED SCRIPT *******'
         			 echo '***************************'
-        			  def lastSuccessfulCommit = getLastSuccessfulCommit()
-					  def currentCommit = commitHashForBuild(currentBuild.rawBuild)
-					  if (lastSuccessfulCommit) {
-					    commits = sh(
-					      script: "git rev-list $currentCommit \"^$lastSuccessfulCommit\"",
-					      returnStdout: true
-					    ).split('\n')
-					    echo '********************************************'
-					    println "Commits are: $commits"
-					    echo '********************************************'
-					  }
+        			 def name = true
+        			 if(name){
+        			 	echo 'the value is true'
+        			 }
+        			 else{
+        			    echo 'the value is false'
+        			 }
         		}
         	}
         }
