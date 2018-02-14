@@ -43,6 +43,11 @@ pipeline {
       	steps {
       		script {
       		  def publisher = LastChanges.getLastChangesPublisher "PREVIOUS_REVISION", "SIDE", "LINE", true, true, "", "", "", "", ""
+              echo '***************************'
+              echo '******* Publisher ************'
+              println(publisher)
+              echo '***************************'
+      		  /*
               publisher.publishLastChanges()
               def changes = publisher.getLastChanges()
               println(changes.getEscapedDiff())
@@ -53,6 +58,7 @@ pipeline {
                   println(commitInfo.getCommitMessage())
                   println(commit.getChanges())
               }
+              */
       		}
       	}
       }
