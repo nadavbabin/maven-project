@@ -3,6 +3,15 @@ pipeline {
     tools {
     	maven 'localMaven'
     }
+
+
+    def myFunc(){
+    	echo '************************'
+    	echo '***** my function ******'
+    	echo '************************'
+    }
+
+
     stages{
         stage('Build'){
             steps {
@@ -15,6 +24,11 @@ pipeline {
                 }
             }
         }
+
+        stage('call-to-my-func'){
+        	myFunc();
+        }
+
         stage('Deploy to Staging'){
         	steps{
         		echo 'Starting to Deploy'
