@@ -56,6 +56,25 @@ pipeline {
         	}
         }
 
+
+      stage("checkout") {
+        git url: 'https://github.com/jenkinsci/last-changes-plugin.git'
+      }
+
+      stage("last-changes") {
+        def publisher = LastChanges.getLastChangesPublisher "PREVIOUS_REVISION", "SIDE", "LINE", true, true, "", "", "", "", ""
+              publisher.publishLastChanges()
+              def changes = publisher.getLastChanges()
+              println(changes.getEscapedDiff())
+              for (commit in changes.getCommits()) {
+                  println(commit)
+                  def commitInfo = commit.getCommitInfo()
+                  println(commitInfo)
+                  println(commitInfo.getCommitMessage())
+                  println(commit.getChanges())
+              }
+      }
+
         stage('Deploy to Staging'){
         	steps{
         		echo 'Starting to Deploy'
