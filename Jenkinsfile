@@ -1,5 +1,3 @@
-
-
 def myFunc(){
     	echo '************************'
     	echo '***** my function ******'
@@ -44,6 +42,9 @@ pipeline {
         stage('call-to-my-func'){
         	steps {
         		script {
+        			 echo '***************************'
+        			 echo '******** STARTED SCRIPT *******'
+        			 echo '***************************'
         			  def lastSuccessfulCommit = getLastSuccessfulCommit()
 					  def currentCommit = commitHashForBuild(currentBuild.rawBuild)
 					  if (lastSuccessfulCommit) {
