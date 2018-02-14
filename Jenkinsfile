@@ -1,3 +1,6 @@
+import jenkins.model.*
+jenkins = Jenkins.instance
+
 def myFunc(){
     	echo '************************'
     	echo '***** my function ******'
