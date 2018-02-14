@@ -33,20 +33,23 @@ pipeline {
         	}
         }
 
-      stage("checkout") {
-      	  steps {
-	        git url: 'https://github.com/nadavbabin/maven-project.git'
-      	  }
-      }
+      
 
       stage("last-changes") {
       	steps {
       		script {
-      		  def publisher = LastChanges.getLastChangesPublisher "PREVIOUS_REVISION", "SIDE", "LINE", true, true, "", "", "", "", ""
+              git url : "$GIT_REPO_URL", branch : "$GIT_BRANCH"
               echo '***************************'
-              echo '******* Publisher ************'
-              println(publisher)
+              	echo env.GIT_COMMIT
+              	echo env.GIT_BRANCH
+              	echo env.GIT_REVISION
               echo '***************************'
+
+              echo '**************************************'
+              echo '***********  SECOND TRY  *************'
+	              def shortCommit = sh(returnStdout : true , script : "git log -n 1 --pretty=format:'%h'").trim()
+    	          println(shortCommit)
+              echo '**************************************'
       		}
       	}
       }
