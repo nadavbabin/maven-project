@@ -45,8 +45,11 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git 'https://github.com/jenkinsci/last-changes-plugin.git'
-                lastChanges since: 'LAST_SUCCESSFUL_BUILD', format:'SIDE',matching: 'LINE'
+            	script {
+					 	git 'https://github.com/jenkinsci/last-changes-plugin.git'
+                		lastChanges since: 'LAST_SUCCESSFUL_BUILD', format:'SIDE',matching: 'LINE'            	
+            	}
+
             }
         }
 
